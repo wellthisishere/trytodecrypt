@@ -26,13 +26,21 @@ IdUrl = '&id='+args.id
 EncryptUrl = 'http://api.trytodecrypt.com/encrypt?key='+args.key+IdUrl
 SolveUrl = 'http://api.trytodecrypt.com/solve?key='+args.key+IdUrl
 
+"""
+function for enumeration it create a url for each letter avaible for input
+then apped a key and value to a dictionary of translations
+"""
 def Enumeration(Input):
-    Url = EncryptUrl+'&text='+''.join(Input)
+    Url = EncryptUrl+'&text='+''.join(Input) 
     response = urllib.request.urlopen(Url)
     EncryptedText = response.read()
     EncryptedText = EncryptedText.decode('utf-8')
     Enum.update({Input: EncryptedText})
 
+"""
+chops the challenge to the appropriate length chunk and looks up each chunk value
+and returns the key. in the end provides the plaintext
+"""
 def solve(challenge):
     solution = ''
     Enum[' '] = Enum.pop('%20')
