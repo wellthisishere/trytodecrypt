@@ -50,8 +50,8 @@ if __name__=='__main__':
     if args.input:
         Enumeration(args.input)
         for k, v in Enum.items():
-            print('Input: ', k)
-            print('Output: ', v)
+            print('Input:\t', k)
+            print('Output:\t', v)
     else: 
         for char in AlphaNumOther:
             Enumeration(char)
